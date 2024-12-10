@@ -1,0 +1,23 @@
+.navigation-header{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+
+    width: 100%;
+}
+
+.navigation-header > h2 {
+    margin-left: 200px;
+}
+
+.navigation-routes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 400px;
+    margin-right: 100px;
+}
