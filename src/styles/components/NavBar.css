@@ -18,6 +18,16 @@
     font-size: 24px;
 }
 
+.non-dropdown-nav{
+    display: flex;
+}
+
+.non-dropdown-list{
+    padding: 0px 20px 0px;
+    text-decoration: none;
+
+}
+
 .dropdown-nav {
     position: absolute;
     top: 50px;
