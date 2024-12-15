@@ -1,55 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRef } from "react";
+import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
+import "../styles/components/NavBar.css";
 
 function NavBar() {
+  const [isDropDown, setIsDropDown] = useState(false);
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    function changeScreen() {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", changeScreen);
+
+    return () => {
+      window.removeEventListener("resize", changeScreen);
+    };
+  }, []);
+
   return (
-    <nav className="nav-container">
-      <ul className="nav-menu sidebar">
-        <li className="nav-option">
-          <Link className="link" to="/">
+    <header className="nav-header">
+      <h3>Logo</h3>
+
+      {screenSize.width < 700 && (
+        <button
+          onClick={() => setIsDropDown(!isDropDown)}
+          className="dropdown-btn"
+        >
+          <FaBars />
+        </button>
+      )}
+
+      {isDropDown && (
+        <nav className="dropdown-nav">
+          <Link className="dropdown-list" to="/">
             Home
           </Link>
-        </li>
-        <li className="nav-option">
-          <Link className="link" to="/">
+          <Link className="dropdown-list" to="/">
             Shop
           </Link>
-        </li>
-        <li className="nav-option">
-          <Link className="link" to="/">
+          <Link className="dropdown-list" to="/">
             About
           </Link>
-        </li>
-        <li className="nav-option">
-          <Link className="link" to="/">
+          <Link className="dropdown-list" to="/">
             Cart
           </Link>
-        </li>
-      </ul>
-      <ul className="nav-menu">
-        <li className="nav-option">
-          <Link className="link" to="/">
-            Home
-          </Link>
-        </li>
-        <li className="nav-option">
-          <Link className="link" to="/">
-            Shop
-          </Link>
-        </li>
-        <li className="nav-option">
-          <Link className="link" to="/">
-            About
-          </Link>
-        </li>
-        <li className="nav-option">
-          <Link className="link" to="/">
-            Cart
-          </Link>
-        </li>
-      </ul>
-    </nav>
+        </nav>
+      )}
+    </header>
   );
 }
 
