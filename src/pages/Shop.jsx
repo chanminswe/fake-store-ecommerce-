@@ -1,36 +1,31 @@
 import React, { useEffect, useState } from "react";
+import "../styles/pages/Shop.css";
 
 function Shop() {
-  //hook
-  //variable , function
   const [products, setProducts] = useState([]);
 
-  //it runs first
   useEffect(() => {
-    function getProducts() {
-      //request
+    function getData() {
       fetch("https://fakestoreapi.com/products")
-        .then((response) => {
-          return response.json();
-        })
-        //data = response.json();
-        .then((data) => {
-          console.log(data);
-          setProducts(data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        .then((response) => response.json())
+        .then((data) => setProducts(data))
+        .catch((error) => console.error(error));
     }
-    getProducts();
+
+    getData();
   }, []);
 
   return (
-    <div>
-      {products.map((product, index) => (
-        <div key={index}>
-         {product.category === 'men\'s clothing' ?  <img className="man-clothe"  src={product.image}></img> : <p></p> }
-        </div>
+    <div className="item-container">
+      {products.map((items, index) => (
+        <figure className="item-lists" key={index}>
+          <img 
+          className="item-image"
+          src={items.image} alt={items.title} />
+          <figcaption
+          className="item-caption"
+          >{items.title}</figcaption>
+        </figure>
       ))}
     </div>
   );

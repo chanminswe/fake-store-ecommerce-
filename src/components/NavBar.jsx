@@ -53,13 +53,13 @@ function NavBar() {
           <Link className="non-dropdown-list" to="/">
             Home
           </Link>
-          <Link className="non-dropdown-list" to="/">
+          <Link className="non-dropdown-list" to="/about">
             About
           </Link>
-          <Link className="non-dropdown-list" to="/">
+          <Link className="non-dropdown-list" to="/shop">
             Shop
           </Link>
-          <Link className="non-dropdown-list" to="/">
+          <Link className="non-dropdown-list" to="/cart">
             Cart
           </Link>
         </nav>
@@ -76,16 +76,32 @@ function NavBar() {
 
       {isDropDown && (
         <nav className="dropdown-nav">
-          <Link className="dropdown-list" to="/">
+          <Link
+            onClick={() => setIsDropDown(false)}
+            className="dropdown-list"
+            to="/"
+          >
             Home
           </Link>
-          <Link className="dropdown-list" to="/">
+          <Link
+            onClick={() => setIsDropDown(false)}
+            className="dropdown-list"
+            to="/shop"
+          >
             Shop
           </Link>
-          <Link className="dropdown-list" to="/">
+          <Link
+            onClick={() => setIsDropDown(false)}
+            className="dropdown-list"
+            to="/about"
+          >
             About
           </Link>
-          <Link className="dropdown-list" to="/">
+          <Link
+            onClick={() => setIsDropDown(false)}
+            className="dropdown-list"
+            to="/cart"
+          >
             Cart
           </Link>
         </nav>

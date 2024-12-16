@@ -1,0 +1,28 @@
+.item-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    border: 2px solid black;
+}
+
+.item-lists{
+    width: 50%;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+    margin: 10px 0 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.item-image{
+    width: 100%;
+    max-height: 70%;
+    object-fit: contain;
+}
+
+.item-caption{
+    font-size: 0.8rem;
+    border: 2px solid black;
+}
