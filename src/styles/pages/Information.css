@@ -1,0 +1,20 @@
+.information-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.image-container{
+    width: 65%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-information{
+    width: 100%;
+}
+
+.item-informations{
+
+}
