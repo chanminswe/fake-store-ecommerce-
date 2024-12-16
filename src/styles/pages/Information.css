@@ -16,5 +16,22 @@
 }
 
 .item-informations{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
+.type-name{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin-top: 20px;
 }

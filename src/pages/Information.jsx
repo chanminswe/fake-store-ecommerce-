@@ -19,13 +19,28 @@ function Information() {
   return (
     <div className="information-container">
       <figure className="image-container">
-        <img 
-        className="image-information"
-        src={item.image} />
+        <img className="image-information" src={item.image} />
       </figure>
 
       <div className="item-informations">
-        
+        <div className="type-name">
+          <p>Category</p>
+          <p>{item.category}</p>
+        </div>
+        <div className="type-name">
+          <p>Price</p>
+          <p style={{ color: "green" }}>${item.price}</p>
+        </div>
+        <div className="type-name title">
+          <p style={{ color: "gray" }}>{item.title}</p>
+        </div>
+        <div className="type-name">
+          <p>{item.description}</p>
+        </div>
+        <div className="type-name">
+          <p>{item.rating.rate}</p>
+          <p>{item.rating.count}</p>
+        </div>
       </div>
     </div>
   );
