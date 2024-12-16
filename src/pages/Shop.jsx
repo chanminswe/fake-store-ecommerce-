@@ -19,12 +19,12 @@ function Shop() {
     <div className="item-container">
       {products.map((items, index) => (
         <figure className="item-lists" key={index}>
-          <img 
-          className="item-image"
-          src={items.image} alt={items.title} />
-          <figcaption
-          className="item-caption"
-          >{items.title}</figcaption>
+          <img className="item-image" src={items.image} alt={items.title} />
+          <figcaption className="item-caption">{items.title}</figcaption>
+          <div className="price-btn-container">
+            <p className="price">${items.price}</p>
+            <button className="addcart-btn">view details</button>
+          </div>
         </figure>
       ))}
     </div>

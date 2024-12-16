@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    border: 2px solid black;
 }
 
 .item-lists{
@@ -14,15 +13,46 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 10px;
 }
 
 .item-image{
     width: 100%;
     max-height: 70%;
     object-fit: contain;
+ 
 }
 
 .item-caption{
-    font-size: 0.8rem;
-    border: 2px solid black;
+    align-content: center;
+    width: 100%;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    border-top: 2px solid lightgray;
+}
+
+.price-btn-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.price{
+    font-size: 0.9rem;
+    color: green;
+}
+
+.addcart-btn{
+    padding : 7px 5px 7px;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    color: white;
+    background: rgb(90, 90, 175);
+    transition: transform 0.3s ease;
+    
+}
+
+.addcart-btn:hover{
+    transform: scale(1.1); 
 }
