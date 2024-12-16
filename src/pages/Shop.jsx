@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../styles/pages/Shop.css";
+import { useNavigate } from "react-router-dom";
 
 function Shop() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     function getData() {
@@ -15,6 +17,10 @@ function Shop() {
     getData();
   }, []);
 
+  function viewProduct(id) {
+    navigate(`/information/${id}`);
+  }
+
   return (
     <div className="item-container">
       {products.map((items, index) => (
@@ -23,7 +29,14 @@ function Shop() {
           <figcaption className="item-caption">{items.title}</figcaption>
           <div className="price-btn-container">
             <p className="price">${items.price}</p>
-            <button className="addcart-btn">view details</button>
+            <button
+              onClick={() => {
+                viewProduct(items.id);
+              }}
+              className="addcart-btn"
+            >
+              view details
+            </button>
           </div>
         </figure>
       ))}
