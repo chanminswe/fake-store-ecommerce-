@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/pages/Information.css";
+import StarRatings from "react-star-ratings";
 
 function Information() {
   const { id } = useParams();
 
   const [item, setItem] = useState([]);
+  const [rating, setRating] = useState();
+  const [review, setReview] = useState();
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setItem(data);
-      });
+    async function getItem() {
+      await fetch(`https://fakestoreapi.com/products/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setItem(data);
+          setRating(data.rating.rate);
+          setReview(data.rating.count);
+        });
+    }
+
+    getItem();
   }, []);
 
   return (
@@ -34,12 +42,21 @@ function Information() {
         <div className="type-name title">
           <p style={{ color: "gray" }}>{item.title}</p>
         </div>
-        <div className="type-name">
-          <p>{item.description}</p>
-        </div>
-        <div className="type-name">
-          <p>{item.rating.rate}</p>
-          <p>{item.rating.count}</p>
+        {window.innerWidth >= 700 && (
+          <div className="type-name">
+            <p>{item.description}</p>
+          </div>
+        )}
+        <div className="type-name star-review">
+          <StarRatings
+            rating={rating}
+            starDimension="20px"
+            starSpacing="2px"
+            starRatedColor="blue"
+            numberOfStars={5}
+            name="rating"
+          />
+          <p>Reviewed by : {review} Users</p>
         </div>
       </div>
     </div>

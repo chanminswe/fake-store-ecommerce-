@@ -35,3 +35,60 @@
     width: 70%;
     margin-top: 20px;
 }
+
+.star-review{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+@media (min-width : 600px){
+    .information-container{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        width: 100%;
+    }
+    
+    .image-container{
+        width: 35%;
+        display: flex;
+        justify-content: center;
+    }
+    .image-information{
+        width: 80%;
+    }
+
+    .item-informations{
+        width: 45%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .type-name{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin-top: 20px;
+    }
+    
+    .title{
+        display: flex;
+        justify-content: center;
+        width: 70%;
+        margin-top: 20px;
+    }
+    
+    .star-review{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    
+
+
+}

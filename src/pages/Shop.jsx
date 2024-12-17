@@ -10,7 +10,10 @@ function Shop() {
     function getData() {
       fetch("https://fakestoreapi.com/products")
         .then((response) => response.json())
-        .then((data) => setProducts(data))
+        .then((data) => {
+          console.log(data);
+          setProducts(data);
+        })
         .catch((error) => console.error(error));
     }
 

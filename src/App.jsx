@@ -6,18 +6,21 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Information from "./pages/Information";
+import ScreenContextProvider from "./context/ScreenContextProvider";
 
 const App = () => {
   return (
     <>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/information/:id" element={<Information />} />
-      </Routes>
+      <ScreenContextProvider>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/information/:id" element={<Information />} />
+        </Routes>
+      </ScreenContextProvider>
     </>
   );
 };

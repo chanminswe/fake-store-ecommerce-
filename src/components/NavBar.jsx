@@ -1,35 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../styles/components/NavBar.css";
+import { ScreenContext } from "../context/ScreenContextProvider";
 
 function NavBar() {
-  const [isDropDown, setIsDropDown] = useState(false);
-  const [screenSize, setScreenSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const { screenSize, isDropDown, setIsDropDown } = useContext(ScreenContext);
 
   const dropDownRef = useRef();
-
-  useEffect(() => {
-    function changeScreen() {
-      setScreenSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-
-    if (window.innerWidth >= 700) {
-      setIsDropDown(false);
-    }
-
-    window.addEventListener("resize", changeScreen);
-
-    return () => {
-      window.removeEventListener("resize", changeScreen);
-    };
-  }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
