@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/pages/Information.css";
 import StarRatings from "react-star-ratings";
+import { ScreenContext } from "../context/ScreenContextProvider";
 
 function Information() {
   const { id } = useParams();
+
+  const { screenSize } = useContext(ScreenContext);
 
   const [item, setItem] = useState([]);
   const [rating, setRating] = useState();
@@ -42,7 +45,7 @@ function Information() {
         <div className="type-name title">
           <p style={{ color: "gray" }}>{item.title}</p>
         </div>
-        {window.innerWidth >= 700 && (
+        {screenSize.width >= 600 && (
           <div className="type-name">
             <p>{item.description}</p>
           </div>
@@ -57,6 +60,9 @@ function Information() {
             name="rating"
           />
           <p>Reviewed by : {review} Users</p>
+        </div>
+        <div className="type-name">
+          <button className="addcart-btn"> Add </button>
         </div>
       </div>
     </div>
