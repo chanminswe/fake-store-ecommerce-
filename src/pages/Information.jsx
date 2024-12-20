@@ -3,12 +3,15 @@ import { useParams } from "react-router-dom";
 import "../styles/pages/Information.css";
 import StarRatings from "react-star-ratings";
 import { ScreenContext } from "../context/ScreenContextProvider";
+import { CartContext } from "../context/CartContextProvider";
+import { toast } from "react-toastify";
 
 function Information() {
   const { id } = useParams();
 
   const { screenSize } = useContext(ScreenContext);
 
+  const { addItem } = useContext(CartContext);
   const [item, setItem] = useState([]);
   const [rating, setRating] = useState();
   const [review, setReview] = useState();
@@ -55,14 +58,19 @@ function Information() {
             rating={rating}
             starDimension="20px"
             starSpacing="2px"
-            starRatedColor="blue"
+            starRatedColor="gold"
             numberOfStars={5}
             name="rating"
           />
           <p>Reviewed by : {review} Users</p>
         </div>
         <div className="type-name">
-          <button className="addcart-btn"> Add </button>
+          <button
+            onClick={() => addItem(item.title, item.price)}
+            className="addcart-btn"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
