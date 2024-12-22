@@ -24,8 +24,30 @@ function CartContextProvider({ children }) {
     toast.success("Item Added Sucessfully!");
   };
 
+  const removeItem = (itemName) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.itemName === itemName);
+
+      if (existingItem) {
+        if (existingItem.quantity > 1) {
+          return prevCart.map((item) =>
+            item.itemName === itemName
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          );
+        } else {
+          return prevCart.filter((item) => item.itemName !== itemName);
+        }
+      }
+
+      return prevCart;
+    });
+
+    toast.success("Item removed successfully!");
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addItem }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem }}>
       {children}
     </CartContext.Provider>
   );
