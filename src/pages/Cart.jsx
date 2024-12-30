@@ -3,40 +3,32 @@ import { CartContext } from "../context/CartContextProvider";
 import "../styles/pages/Cart.css";
 
 function Cart() {
-  const { cart, removeItem } = useContext(CartContext);
+  const { cart, removeItem, setCart } = useContext(CartContext);
 
   useEffect(() => {
     console.log(cart);
-  }, [cart]);
+    const removeEmpty = cart.filter((items) => items.quantity !== 0);
+    setCart(removeEmpty);
+  }, []);
+
   return (
     <div className="cart-container">
-      <div className="cart-title">
-        <div style={{ maxWidth: "33%" }}>
-          <p>Item Name</p>
-        </div>
-        <p style={{ maxWidth: "33%" }}>Quantity</p>
-        <p style={{ maxWidth: "33%" }}>Price</p>
+      <div className="title-container">
+        <h4>ItemName</h4>
+        <h4>Price</h4>
+        <h4>Quantity</h4>
+        <h4>Remove Item</h4>
       </div>
-      {cart.map(
-        (value, index) =>
-          value.quantity !== 0 && (
-            <div className="cart-items">
-              <div style={{ maxWidth: "25%", fontSize: "small" }}>
-                <p>{value.itemName}</p>
-              </div>
-              <p>{value.quantity}</p>
-              <div className="remove-btn-container">
-                <p>{value.price}</p>
-                <button
-                  className="remove-btn"
-                  onClick={() => removeItem(value.itemName)}
-                >
-                  X
-                </button>
-              </div>
-            </div>
-          )
-      )}
+      {cart.map((value, index) => (
+        <div className="items-container">
+          <p>{value.itemName}</p>
+          <p>{value.price}</p>
+          <p>{value.quantity}</p>
+          {value.itemName && (
+            <button onClick={() => removeItem(itemName)}>X</button>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
